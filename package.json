@@ -1,0 +1,17 @@
+{
+  "name": "cellular-automata",
+  "version": "0.1.0",
+  "description": "A general container for cellular automata in typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require ts-node/register 'tst/**/*.ts'"
+  },
+  "author": "Rocky Li",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mocha": "^8.2.1",
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "ts-node": "^9.1.1"
+  }
+}
