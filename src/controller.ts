@@ -37,10 +37,10 @@ export class Controller {
     }
 
     setRunState(runState: boolean): void {
-        this.runState = runState;
-        if (this.runState) {
+        if (!this.runState && runState) {
             this.run();
         }
+        this.runState = runState;
     }
 
     runOnce(): void {
@@ -51,9 +51,9 @@ export class Controller {
 
     run(): void {
         let controller = this;
+        controller.runOnce();
         setTimeout(() => {
             if (controller.runState) {
-                controller.runOnce();
                 controller.run();
             }
         }, controller.config.timeStep);

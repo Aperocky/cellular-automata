@@ -28,6 +28,7 @@ export default function setup(controller) {
     let startButton = document.getElementById(CONSTANTS.START_BUTTON_ELEMENT_ID);
     let continueButton = document.getElementById(CONSTANTS.CONTINUE_BUTTON_ELEMENT_ID);
     let stopButton = document.getElementById(CONSTANTS.STOP_BUTTON_ELEMENT_ID);
+    let stepButton = document.getElementById(CONSTANTS.STEP_BUTTON_ELEMENT_ID);
 
     console.log(textbox);
     textbox.value = FOREST_FIRE;
@@ -47,5 +48,10 @@ export default function setup(controller) {
 
     stopButton.addEventListener("click", () => {
         controller.setRunState(false);
+    });
+
+    stepButton.addEventListener("click", () => {
+        controller.setRunState(false);
+        controller.runOnce();
     });
 }

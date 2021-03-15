@@ -39,3 +39,4 @@ export const TEXTBOX_ELEMENT_ID = "textbox";
 export const START_BUTTON_ELEMENT_ID = "start";
 export const CONTINUE_BUTTON_ELEMENT_ID = "continue";
 export const STOP_BUTTON_ELEMENT_ID = "stop";
+export const STEP_BUTTON_ELEMENT_ID = "step";
