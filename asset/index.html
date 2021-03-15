@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Rocky Li">
+
+    <title>Cellular-Automata</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <style type="text/css">
+        body {
+            background: #ddd;
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+        footer {
+            min-height: 10vh;
+        }
+        button {
+            display: inline-block;
+            margin: 0px 10px;
+        }
+        .filler {
+            min-height: 2vh;
+        }
+        #mebody {
+            min-height: 90vh;
+            min-width: 95%;
+        }
+        #textbox {
+            height: 600px;
+            width: 90%;
+            overflow-y: auto;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container" id="mebody">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="filler"></div>
+            <div id="canvas"></div>
+            <div class="filler"></div>
+        </div>
+        <div class="col-md-4" id="side">
+            <div class="filler"></div>
+            <div class="row">
+                <textarea id="textbox" rows="30", cols="40"></textarea>
+            </div>
+            <div class="filler"></div>
+            <div class="row">
+            <button class="btn btn-primary" id="start">START</button>
+            <button class="btn btn-success" id="continue">CONTINUE</button>
+            <button class="btn btn-danger" id="stop">STOP</button>
+            </div>
+            <div class="filler"></div>
+            <div class="row">
+                <p class=lead><a href="https://github.com/Aperocky/cellular-automata">Source and Readme</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Rocky Li</p>
+    </div>
+</footer>
+</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.3/pixi.min.js"></script>
+    <script type="module" src="script.min.js"></script>
+</html>

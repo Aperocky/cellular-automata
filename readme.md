@@ -10,7 +10,6 @@ e.g.
 {
     "InitialCondition": "1 0.2",
     "0": [
-        "CountAdjacent eq 1 2 1",
         "CountAdjacent eq 1 3 1"
     ],
     "1": [
@@ -21,3 +20,38 @@ e.g.
 ```
 
 ^^ This correspond to conway's game of life.
+
+### Anatomy of the json file
+
+```
+{
+    "InitialCondition": "1 0.2",
+```
+
+Currently I only support 1 kind of initial value that are not zero, the first one being target.
+
+```
+    "0": [
+        "CountAdjacent eq 1 3 1"
+    ],
+    "1": [
+        "CountAdjacent lt 1 2 0",
+        "CountAdjacent gt 1 3 0"
+    ]
+```
+
+list of function associated with the current values in the locations, these 3 means:
+
+If this square is 0, Count All Adjacent 1s, if it equals 3, make the value 1.
+If this square is 1, Count All Adjacent 1s, if it is less than 2, make the value 0.
+If this square is 1, Count All Adjacent 1s, if it is greater than 3, make the value 0.
+
+```
+    "colorMap": {
+        "0": "black",
+        "1": "red"
+    }
+}
+```
+
+There is a default color map, you can make your own too. However, if you don't cover all possibilities the ones not covered will show up as turd color.

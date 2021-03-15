@@ -36,6 +36,7 @@ describe('grid:Grid', () => {
         grid.createInitialCondition(config);
         let gridSum = [].concat(...grid.grid).filter(e => e == 1).length;
         expect(gridSum > 20).to.be.true;
+        expect(grid.previousGrid).to.eql(new Grid(10).grid);
     });
 
     it('test conway condition in updateGrid', () => {
@@ -45,5 +46,19 @@ describe('grid:Grid', () => {
         grid.grid = TEST_GRID_1;
         grid.updateGrid(config);
         expect(grid.grid).to.eql(TEST_GRID_1_CONWAY_UPDATE);
+        expect(grid.previousGrid).to.eql(TEST_GRID_1);
+    });
+
+    it('test change set', () => {
+        let inputString = JSON.stringify(CONWAY_CONDITIONS);
+        let config = parse(inputString);
+        let grid = new Grid(3);
+        grid.grid = TEST_GRID_1;
+        grid.updateGrid(config);
+        let changeSet = grid.getChangeSet(config);
+        expect(changeSet.size).to.equal(5);
+        let testLoc = JSON.stringify({x: 0, y: 1});
+        expect(changeSet.has(testLoc)).to.be.true;
+        expect(changeSet.get(testLoc)).to.equal("cyan");
     });
 });

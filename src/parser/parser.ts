@@ -1,6 +1,7 @@
 import { GridFunction, ParameterizedFunction } from '../func/gridFunction';
 import { FUNCTION_REGISTRY } from '../func/funcRegistry';
 import { Configuration } from './configuration';
+import * as CONSTANTS from '../display/constants';
 
 
 export default function parse(inputJson: string): Configuration {
@@ -15,9 +16,37 @@ export default function parse(inputJson: string): Configuration {
         config.setInitialCondition(parseInitialCondition(initialConditionString));
         delete rawConfig.initialcondition;
     }
+    if ("colormap" in rawConfig) {
+        let colorMap = rawConfig["colormap"];
+        config.setColorMap(parseColorMap(colorMap));
+        delete rawConfig.colormap;
+    } else {
+        config.setColorMap(CONSTANTS.DEFAULT_COLOR_MAP);
+    }
     let funcMap = parseFuncMap(rawConfig);
     config.setFuncMap(funcMap);
     return config
+}
+
+function parseColorMap(colorMap): Map<number, string> {
+    let result: Map<number, string> = new Map();
+    if (typeof colorMap != "object") {
+        throw new Error("Color map must be object");
+    }
+    for (const [numStr, color] of Object.entries(colorMap)) {
+        if (typeof color != "string") {
+            throw new Error(`Color type must be string, not ${typeof color}`);
+        }
+        let num = parseInt(numStr);
+        if (!Number.isInteger(num)) {
+            throw new Error(`Color Map keys must be integers, not ${numStr}`);
+        }
+        if (!CONSTANTS.COLOR_MAP.has(color)) {
+            throw new Error(`Color ${color} is not found`);
+        }
+        result.set(num, color);
+    }
+    return result;
 }
 
 // Only accept 1 distinct type for now.

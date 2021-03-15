@@ -1,11 +1,14 @@
 {
     "compilerOptions": {
         "esModuleInterop": true,
-        "target": "es6",
+        "target": "es5",
         "removeComments": true,
         "lib": [
             "es2017",
             "dom"
         ]
-    }
+    },
+    "files": [
+        "src/main.ts"
+    ]
 }
