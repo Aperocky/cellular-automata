@@ -32,8 +32,10 @@ export class Controller {
         this.grid.createInitialCondition(config);
         let changeSet = this.grid.getChangeSet(config);
         this.canvas.updateMapSquares(changeSet);
-        this.runState = true;
-        this.run();
+        if (!this.runState) {
+            this.runState = true;
+            this.run();
+        }
     }
 
     setRunState(runState: boolean): void {

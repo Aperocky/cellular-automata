@@ -1,0 +1,15 @@
+{
+  "0": [
+    "SpontaneousChange 1 0.1"
+  ],
+  "1": [
+    "CountAdjacent gt 1 5 2"
+  ],
+  "2": [],
+  "colorMap": {
+    "0": "tintblack",
+    "1": "cyan",
+    "2": "gray"
+  },
+  "timeStep": 100
+}
