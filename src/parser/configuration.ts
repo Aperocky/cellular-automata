@@ -6,6 +6,7 @@ export class Configuration {
     initialCondition?: number[];
     colorMap: Map<number, string>;
     funcMap: Map<number, ParameterizedFunction[]>;
+    timeStep: number;
 
     setInitialCondition(initialCondition: number[]): void {
         this.initialCondition = initialCondition;
@@ -17,5 +18,9 @@ export class Configuration {
 
     setColorMap(colorMap: Map<number, string>): void {
         this.colorMap = colorMap;
+    }
+
+    setTimeStep(timeStep: number): void {
+        this.timeStep = timeStep;
     }
 }

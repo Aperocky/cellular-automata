@@ -14,5 +14,6 @@
     "0": "black",
     "1": "green",
     "2": "red"
-  }
+  },
+  "timeStep": 100
 }

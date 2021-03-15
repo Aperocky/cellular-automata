@@ -1,0 +1,26 @@
+{
+  "0": [
+    "SpontaneousChange 1 0.02",
+    "CountAdjacentChance gt 1 0 1 0.05",
+    "CountAdjacent gt 4 3 1"
+  ],
+  "1": [
+    "SpontaneousChange 2 0.001",
+    "CountAdjacentChance gt 2 0 2 0.6"
+  ],
+  "2": [
+    "SpontaneousChange 0 0.7",
+    "SpontaneousChange 3 1"
+  ],
+  "3": [
+    "CountAdjacent gt 3 3 1",
+    "SpontaneousChange 1 0.05"
+  ],
+  "colorMap": {
+    "0": "black",
+    "1": "green",
+    "2": "red",
+    "3": "turd"
+  },
+  "timestep": 200
+}

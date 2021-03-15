@@ -23,9 +23,27 @@ export default function parse(inputJson: string): Configuration {
     } else {
         config.setColorMap(CONSTANTS.DEFAULT_COLOR_MAP);
     }
+    if ("timestep" in rawConfig) {
+        let timeStep = rawConfig["timestep"]
+        config.setTimeStep(parseTimeStep(timeStep));
+        delete rawConfig.timestep;
+    } else {
+        config.setTimeStep(100);
+    }
     let funcMap = parseFuncMap(rawConfig);
     config.setFuncMap(funcMap);
     return config
+}
+
+function parseTimeStep(timeStep): number {
+    let time = parseInt(timeStep);
+    if (!Number.isInteger(time)) {
+        throw new Error(`Timestep must be an integer value`);
+    }
+    if (time < 0) {
+        throw new Error(`Timestep cannot be lower than 0`);
+    }
+    return time;
 }
 
 function parseColorMap(colorMap): Map<number, string> {

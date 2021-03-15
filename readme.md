@@ -1,7 +1,5 @@
 ## Cellular Automata
 
-----
-
 Creating a cellular automata with a couple lines of descriptive language and watch how it evolves:
 
 e.g.
@@ -38,11 +36,14 @@ e.g.
     "0": "black",
     "1": "green",
     "2": "red"
-  }
+  },
+  "timeStep": 100
 }
 ```
 
 This correspond to a forest fire (more complex);
+
+More examples: https://github.com/Aperocky/cellular-automata/tree/main/sample
 
 ### Anatomy of the json file
 
@@ -73,8 +74,25 @@ list of function associated with the current values in the locations, these 3 me
     "colorMap": {
         "0": "black",
         "1": "red"
-    }
+    },
+    "timestep": 100,
 }
 ```
 
-There is a default color map, you can make your own too. However, if you don't cover all possibilities the ones not covered will show up as turd color.
+There is a default color map, you can make your own too. However, custom colormap need to cover all cases.
+
+timestep are measured in milliseconds.
+
+### Functions
+
+`CountAdjacent [comparison-operator] [target] [threshold] [destination]`
+
+This compares the adjacent number of `target` with `threshold` to determine if it will changes to `destination`
+
+`CountAdjacentChance [comparison-operator] [target] [threshold] [destination] [chance]`
+
+This compares the adjacent number of `target` with `threshold` to determine if it will changes to `destination`, however, it only does it on `chance`.
+
+`SpontaneousChange [destination] [chance]`
+
+This block will change into `destination` on `chance`.

@@ -56,6 +56,6 @@ export class Controller {
                 controller.runOnce();
                 controller.run();
             }
-        }, 100);
+        }, controller.config.timeStep);
     }
 }

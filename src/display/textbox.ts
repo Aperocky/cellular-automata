@@ -2,15 +2,24 @@ import * as CONSTANTS from './constants';
 import { Controller } from '../controller';
 
 
-const CONWAY_TEXT = `{
-  "InitialCondition": "1 0.2",
+const FOREST_FIRE = `{
   "0": [
-    "CountAdjacent eq 1 3 1"
+    "SpontaneousChange 1 0.02",
+    "CountAdjacentChance gt 1 0 1 0.1"
   ],
   "1": [
-    "CountAdjacent lt 1 2 0",
-    "CountAdjacent gt 1 3 0"
-  ]
+    "SpontaneousChange 2 0.002",
+    "CountAdjacent gt 2 0 2"
+  ],
+  "2": [
+    "SpontaneousChange 0 1"
+  ],
+  "colorMap": {
+    "0": "black",
+    "1": "green",
+    "2": "red"
+  },
+  "timeStep": 100
 }`;
 
 
@@ -21,7 +30,7 @@ export default function setup(controller) {
     let stopButton = document.getElementById(CONSTANTS.STOP_BUTTON_ELEMENT_ID);
 
     console.log(textbox);
-    textbox.value = CONWAY_TEXT;
+    textbox.value = FOREST_FIRE;
 
     startButton.addEventListener("click", () => {
         let inputJson = textbox.value;
