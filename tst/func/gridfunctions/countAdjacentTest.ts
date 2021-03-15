@@ -1,4 +1,4 @@
-import { countAdjacent } from '../../../src/func/gridFunctions/countAdjacent';
+import { countAdjacent, countAdjacentChance } from '../../../src/func/gridFunctions/countAdjacent';
 import { Location } from '../../../src/grid/gridUtil';
 import { expect } from 'chai';
 
@@ -52,5 +52,15 @@ describe('func:CountAdjacent', () => {
         expect(parameterizedFunc(TEST_GRID_2, location)).to.equal(0);
         location = { x: 2, y: 0 };
         expect(parameterizedFunc(TEST_GRID_2, location)).to.equal(0);
+    });
+
+    it('test countAdjacentChance', () => {
+        let args = ["gt", "1", "2", "0", "1"];
+        let parameterizedFunc = countAdjacentChance.getParameterizedFunc(...args);
+        let location: Location = { x: 1, y: 1 };
+        expect(parameterizedFunc(TEST_GRID_2, location)).to.equal(0);
+        args = ["gt", "1", "2", "0", "0"];
+        parameterizedFunc = countAdjacentChance.getParameterizedFunc(...args);
+        expect(parameterizedFunc(TEST_GRID_2, location)).to.equal(1);
     });
 });

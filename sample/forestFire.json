@@ -1,0 +1,18 @@
+{
+  "0": [
+    "SpontaneousChange 1 0.02",
+    "CountAdjacentChance gt 1 0 1 0.1"
+  ],
+  "1": [
+    "SpontaneousChange 2 0.002",
+    "CountAdjacent gt 2 0 2"
+  ],
+  "2": [
+    "SpontaneousChange 0 1"
+  ],
+  "colorMap": {
+    "0": "black",
+    "1": "green",
+    "2": "red"
+  }
+}

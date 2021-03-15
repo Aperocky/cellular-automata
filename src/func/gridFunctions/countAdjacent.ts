@@ -26,3 +26,25 @@ export const countAdjacent: GridFunction = {
         }
     }
 }
+
+
+export const countAdjacentChance: GridFunction = {
+    parameterCount: 5,
+    description: "CountAdjacent [comparison-operator] [target] [threshold] [destination] [chance]",
+    getParameterizedFunc: (...args: string[]) => {
+        let chance = parseFloat(args.pop());
+        if (chance < 0 || chance > 1) {
+            throw new Error("Parameter chance of CountAdjacentChance must be between 0 and 1");
+        }
+        let baseFunc = countAdjacent.getParameterizedFunc(...args);
+        return (grid: number[][], location: Location): number => {
+            let result = baseFunc(grid, location);
+            if (result != grid[location.y][location.x]) {
+                if (Math.random() < chance) {
+                    return result;
+                }
+            }
+            return grid[location.y][location.x];
+        }
+    }
+}

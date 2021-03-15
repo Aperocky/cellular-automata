@@ -21,6 +21,29 @@ e.g.
 
 ^^ This correspond to conway's game of life.
 
+```
+{
+  "0": [
+    "SpontaneousChange 1 0.02",
+    "CountAdjacentChance gt 1 0 1 0.1"
+  ],
+  "1": [
+    "SpontaneousChange 2 0.002",
+    "CountAdjacent gt 2 0 2"
+  ],
+  "2": [
+    "SpontaneousChange 0 1"
+  ],
+  "colorMap": {
+    "0": "black",
+    "1": "green",
+    "2": "red"
+  }
+}
+```
+
+This correspond to a forest fire (more complex);
+
 ### Anatomy of the json file
 
 ```
@@ -42,9 +65,9 @@ Currently I only support 1 kind of initial value that are not zero, the first on
 
 list of function associated with the current values in the locations, these 3 means:
 
-If this square is 0, Count All Adjacent 1s, if it equals 3, make the value 1.
-If this square is 1, Count All Adjacent 1s, if it is less than 2, make the value 0.
-If this square is 1, Count All Adjacent 1s, if it is greater than 3, make the value 0.
+* If this square is 0, Count All Adjacent 1s, if it equals 3, make the value 1.
+* If this square is 1, Count All Adjacent 1s, if it is less than 2, make the value 0.
+* If this square is 1, Count All Adjacent 1s, if it is greater than 3, make the value 0.
 
 ```
     "colorMap": {
