@@ -27,3 +27,15 @@ export function getAdjacentLocations(size: number, loc: Location): Location[] {
     })
     return results;
 }
+
+export function getDirectlyAdjacentLocations(size: number, loc: Location): Location[] {
+    let x = loc.x;
+    let y = loc.y;
+    let rangeFilter = (i: number) => i >= 0 && i < size;
+    let xRange = [x-1, x+1].filter(rangeFilter);
+    let yRange = [y-1, y+1].filter(rangeFilter);
+    let results: Location[] = [];
+    results = results.concat(xRange.map(ix => { return {x: ix, y: y}; }));
+    results = results.concat(yRange.map(iy => { return {x: x, y: iy}; }));
+    return results;
+}

@@ -49,7 +49,9 @@ More examples: https://github.com/Aperocky/cellular-automata/tree/main/sample
 
 `CountAdjacent [comparison-operator] [target] [threshold] [destination]`
 
-This compares the adjacent number of `target` with `threshold` to determine if it will changes to `destination`
+`CountDirectlyAdjacent [comparison-operator] [target] [threshold] [destination]`
+
+This compares the adjacent number of `target` with `threshold` to determine if it will changes to `destination`. Adjacent goes to 8 neighboring cells, DirectlyAdjacent only goes to 4.
 
 `CountAdjacentChance [comparison-operator] [target] [threshold] [destination] [chance]`
 
