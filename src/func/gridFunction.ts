@@ -1,4 +1,6 @@
 import { Location } from '../grid/gridUtil';
+import { Grid } from '../grid/grid';
+
 
 export const COMPARISONS = {
     "eq": (a, b) => a == b,
@@ -10,7 +12,7 @@ export const COMPARISONS = {
 }
 
 export interface ParameterizedFunction {
-    (grid: number[][], location: Location): number;
+    (grid: Grid, location: Location): number;
 }
 
 export interface GridFunction {
@@ -18,4 +20,3 @@ export interface GridFunction {
     parameterCount: number;
     getParameterizedFunc: (...args: string[]) => ParameterizedFunction;
 }
-

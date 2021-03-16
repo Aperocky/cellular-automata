@@ -61,4 +61,18 @@ describe('grid:Grid', () => {
         expect(changeSet.has(testLoc)).to.be.true;
         expect(changeSet.get(testLoc)).to.equal("cyan");
     });
+
+    it('test grid age', () => {
+        let inputString = JSON.stringify(CONWAY_CONDITIONS);
+        let config = parse(inputString);
+        let grid = new Grid(3);
+        grid.grid = TEST_GRID_1;
+        grid.updateGrid(config);
+        let changeSet = grid.getChangeSet(config);
+        changeSet.forEach((val, key) => {
+            let loc = JSON.parse(key);
+            expect(grid.gridAge[loc.y][loc.x]).to.equal(0);
+        })
+        expect(grid.gridAge[2][2]).to.equal(1);
+    });
 });

@@ -1,5 +1,6 @@
 import { GridFunction, ParameterizedFunction, COMPARISONS } from '../gridFunction';
 import { Location, getAdjacentLocations } from '../../grid/gridUtil';
+import { Grid } from '../../grid/grid';
 
 
 export const countAdjacent: GridFunction = {
@@ -16,13 +17,13 @@ export const countAdjacent: GridFunction = {
         if (!(comparisonType in COMPARISONS)) {
             throw new Error(`Comparison-operator ${comparisonType} is not supported`);
         }
-        return (grid: number[][], location: Location): number => {
-            let adjacents = getAdjacentLocations(grid.length, location);
-            let targetCounter = adjacents.filter(loc => grid[loc.y][loc.x] == target).length;
+        return (grid: Grid, location: Location): number => {
+            let adjacents = getAdjacentLocations(grid.size, location);
+            let targetCounter = adjacents.filter(loc => grid.grid[loc.y][loc.x] == target).length;
             if (COMPARISONS[comparisonType](targetCounter, threshold)) {
                 return destination;
             }
-            return grid[location.y][location.x];
+            return grid.grid[location.y][location.x];
         }
     }
 }
@@ -37,14 +38,14 @@ export const countAdjacentChance: GridFunction = {
             throw new Error("Parameter chance of CountAdjacentChance must be between 0 and 1");
         }
         let baseFunc = countAdjacent.getParameterizedFunc(...args);
-        return (grid: number[][], location: Location): number => {
+        return (grid: Grid, location: Location): number => {
             let result = baseFunc(grid, location);
-            if (result != grid[location.y][location.x]) {
+            if (result != grid.grid[location.y][location.x]) {
                 if (Math.random() < chance) {
                     return result;
                 }
             }
-            return grid[location.y][location.x];
+            return grid.grid[location.y][location.x];
         }
     }
 }

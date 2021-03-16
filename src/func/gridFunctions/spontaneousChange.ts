@@ -1,4 +1,5 @@
 import { GridFunction, ParameterizedFunction, COMPARISONS } from '../gridFunction';
+import { Grid } from '../../grid/Grid';
 import { Location } from '../../grid/gridUtil';
 
 
@@ -14,11 +15,11 @@ export const spontaneousChange: GridFunction = {
         if (chance < 0 || chance > 1) {
             throw new Error("Parameter chance of SpontaneousChange must be between 0 and 1");
         }
-        return (grid: number[][], location: Location): number => {
+        return (grid: Grid, location: Location): number => {
             if (Math.random() < chance) {
                 return destination;
             }
-            return grid[location.y][location.x];
+            return grid.grid[location.y][location.x];
         }
     }
 }

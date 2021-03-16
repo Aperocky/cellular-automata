@@ -8,11 +8,13 @@ export class Grid {
 
     size: number;
     grid: number[][];
+    gridAge: number[][];
     previousGrid: number[][];
 
     constructor(size: number) {
         this.size = size;
         this.grid = Array.apply(null, new Array(size)).map(e => Array(10).fill(0));
+        this.gridAge = Array.apply(null, new Array(size)).map(e => Array(10).fill(0));
         this.previousGrid = JSON.parse(JSON.stringify(this.grid));
     }
 
@@ -39,15 +41,17 @@ export class Grid {
         let gridCopy = JSON.parse(JSON.stringify(this.grid));
         for (let y=0; y<this.size; y++) {
             for (let x=0; x<this.size; x++) {
+                this.gridAge[y][x] += 1;
                 let currNum = this.grid[y][x];
                 if (!config.funcMap.has(currNum)) {
                     continue;
                 }
                 let paramFuncs: ParameterizedFunction[] = config.funcMap.get(currNum);
                 for (let i=0; i<paramFuncs.length; i++) {
-                    let currResult = paramFuncs[i](this.grid, {x: x, y: y});
+                    let currResult = paramFuncs[i](this, {x: x, y: y});
                     if (currResult != currNum) {
                         gridCopy[y][x] = currResult;
+                        this.gridAge[y][x] = 0;
                         break;
                     }
                 }

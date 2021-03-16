@@ -1,5 +1,6 @@
 import { spontaneousChange } from '../../../src/func/gridFunctions/spontaneousChange';
 import { Location } from '../../../src/grid/gridUtil';
+import { Grid } from '../../../src/grid/grid';
 import { expect } from 'chai';
 
 const TEST_GRID_1 = [
@@ -14,13 +15,15 @@ describe('func:SpontaneousChange', () => {
         let args = ["1", "1"];
         let parameterizedFunc = spontaneousChange.getParameterizedFunc(...args);
         let location: Location = { x: 1, y: 0 };
-        expect(parameterizedFunc(TEST_GRID_1, location)).to.equal(1);
+        let grid = new Grid(3);
+        grid.grid = TEST_GRID_1;
+        expect(parameterizedFunc(grid, location)).to.equal(1);
         location = { x: 0, y: 0 };
-        expect(parameterizedFunc(TEST_GRID_1, location)).to.equal(1);
+        expect(parameterizedFunc(grid, location)).to.equal(1);
         location = { x: 0, y: 1 };
-        expect(parameterizedFunc(TEST_GRID_1, location)).to.equal(1);
+        expect(parameterizedFunc(grid, location)).to.equal(1);
         location = { x: 2, y: 2 };
-        expect(parameterizedFunc(TEST_GRID_1, location)).to.equal(1);
+        expect(parameterizedFunc(grid, location)).to.equal(1);
     });
 
     it('test bad parameter', () => {

@@ -45,6 +45,24 @@ This correspond to a forest fire (more complex);
 
 More examples: https://github.com/Aperocky/cellular-automata/tree/main/sample
 
+### Functions
+
+`CountAdjacent [comparison-operator] [target] [threshold] [destination]`
+
+This compares the adjacent number of `target` with `threshold` to determine if it will changes to `destination`
+
+`CountAdjacentChance [comparison-operator] [target] [threshold] [destination] [chance]`
+
+This compares the adjacent number of `target` with `threshold` to determine if it will changes to `destination`, however, it only does it on `chance`.
+
+`SpontaneousChange [destination] [chance]`
+
+This block will change into `destination` on `chance`.
+
+`ChangeByBLockAge [comparison-operator] [threshold] [destination] [chance]`
+
+This will change the block by comparing the age of the block (when it remains the same) against the `threshold`, and if satisfy the comparison, will change into `destination` on `chance`.
+
 ### Anatomy of the json file
 
 ```
@@ -83,16 +101,3 @@ There is a default color map, you can make your own too. However, custom colorma
 
 timestep are measured in milliseconds.
 
-### Functions
-
-`CountAdjacent [comparison-operator] [target] [threshold] [destination]`
-
-This compares the adjacent number of `target` with `threshold` to determine if it will changes to `destination`
-
-`CountAdjacentChance [comparison-operator] [target] [threshold] [destination] [chance]`
-
-This compares the adjacent number of `target` with `threshold` to determine if it will changes to `destination`, however, it only does it on `chance`.
-
-`SpontaneousChange [destination] [chance]`
-
-This block will change into `destination` on `chance`.
