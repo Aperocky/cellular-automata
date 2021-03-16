@@ -2,6 +2,8 @@
 
 Creating a cellular automata with a couple lines of descriptive language and watch how it evolves:
 
+It now supports hot loading, CONTINUE and STEP each loads the new paradigm from a pause.
+
 e.g.
 
 ```
