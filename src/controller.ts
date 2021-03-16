@@ -12,6 +12,7 @@ export class Controller {
     grid: Grid;
     size: number;
     runState: boolean;
+    configString: string;
 
     constructor(size: number) {
         this.grid = new Grid(size);
@@ -20,7 +21,7 @@ export class Controller {
         setup(this);
     }
 
-    setConfiguration(inputJson: string): void {
+    setConfiguration(inputJson: string, hotStart: boolean = false): void {
         let config;
         try {
             config = parse(inputJson);
@@ -29,20 +30,19 @@ export class Controller {
             throw e;
         }
         this.config = config;
-        this.grid.createInitialCondition(config);
-        let changeSet = this.grid.getChangeSet(config);
-        this.canvas.updateMapSquares(changeSet);
-        if (!this.runState) {
-            this.runState = true;
-            this.run();
+        this.configString = inputJson;
+        if (!hotStart) {
+            this.grid.createInitialCondition(config);
+            let changeSet = this.grid.getChangeSet(config);
+            this.canvas.updateMapSquares(changeSet);
         }
     }
 
     setRunState(runState: boolean): void {
-        if (!this.runState && runState) {
+        this.runState = runState;
+        if (this.runState) {
             this.run();
         }
-        this.runState = runState;
     }
 
     runOnce(): void {

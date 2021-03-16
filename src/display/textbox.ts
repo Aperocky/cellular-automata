@@ -23,27 +23,45 @@ const FOREST_FIRE = `{
 }`;
 
 
-export default function setup(controller) {
+function updateConfiguration(inputJson: string, controller: Controller, runState: boolean): void {
+    if (inputJson != controller.configString) {
+        try {
+            controller.setConfiguration(inputJson, true);
+        } catch (e) {
+            alert(`JSON Parse error: ${e.message}`);
+            return;
+        }
+    }
+    controller.setRunState(runState);
+}
+
+
+export default function setup(controller: Controller) {
     let textbox = <HTMLInputElement>document.getElementById(CONSTANTS.TEXTBOX_ELEMENT_ID);
     let startButton = document.getElementById(CONSTANTS.START_BUTTON_ELEMENT_ID);
     let continueButton = document.getElementById(CONSTANTS.CONTINUE_BUTTON_ELEMENT_ID);
     let stopButton = document.getElementById(CONSTANTS.STOP_BUTTON_ELEMENT_ID);
     let stepButton = document.getElementById(CONSTANTS.STEP_BUTTON_ELEMENT_ID);
 
-    console.log(textbox);
     textbox.value = FOREST_FIRE;
 
     startButton.addEventListener("click", () => {
         let inputJson = textbox.value;
         try {
             controller.setConfiguration(inputJson);
+            if (!controller.runState) {
+                controller.setRunState(true);
+            }
         } catch (e) {
             alert(`JSON Parse error: ${e.message}`);
         }
     });
 
     continueButton.addEventListener("click", () => {
-        controller.setRunState(true);
+        if (controller.runState) {
+            return;
+        }
+        updateConfiguration(textbox.value, controller, true);
     });
 
     stopButton.addEventListener("click", () => {
@@ -52,6 +70,7 @@ export default function setup(controller) {
 
     stepButton.addEventListener("click", () => {
         controller.setRunState(false);
+        updateConfiguration(textbox.value, controller, false);
         controller.runOnce();
     });
 }
