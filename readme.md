@@ -59,6 +59,7 @@ This compares the total adjacent blocks that are `target` with `threshold` to de
 
 ```
 CountAdjacentChance [comparison-operator] [target] [threshold] [destination] [chance]
+CountDirectlyAdjacentChance [comparison-operator] [target] [threshold] [destination] [chance]
 ```
 
 This compares the total adjacent blocks that are `target` with `threshold` to determine if it will changes to `destination`, however, it only does so on `chance`.

@@ -1,0 +1,32 @@
+{
+  "0": [
+    "SpontaneousChange 1 0.00002",
+    "SpontaneousChange 2 0.00002",
+    "SpontaneousChange 3 0.00002",
+    "CountDirectlyAdjacentChance gt 1 0 1 0.05",
+    "CountDirectlyAdjacentChance gt 2 0 2 0.05",
+    "CountDirectlyAdjacentChance gt 3 0 3 0.05",
+    "CountDirectlyAdjacent gt 1 1 1",
+    "CountDirectlyAdjacent gt 2 1 2",
+    "CountDirectlyAdjacent gt 3 1 3"
+  ],
+  "1": [
+    "CountAdjacent gt 2 4 2",
+    "CountAdjacent gt 3 4 3"
+  ],
+  "2": [
+    "CountAdjacent gt 1 4 1",
+    "CountAdjacent gt 3 4 3"
+  ],
+  "3": [
+    "CountAdjacent gt 1 4 1",
+    "CountAdjacent gt 2 4 2"
+  ],
+  "colorMap": {
+    "0": "tintblack",
+    "1": "cyan",
+    "2": "green",
+    "3": "sand"
+  },
+  "timeStep": 100
+}
