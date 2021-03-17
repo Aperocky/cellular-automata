@@ -13,7 +13,7 @@ let getCountAdjacentGridFunction = (name, func): GridFunction => {
             let threshold = parseInt(args[2]);
             let destination = parseInt(args[3]);
             if (!Number.isInteger(target) || !Number.isInteger(threshold) || !Number.isInteger(destination)) {
-                throw new Error("Parameter target, threshold, destination of countAdjacent must be integer");
+                throw new Error(`Parameter target, threshold, destination of ${name} must be integer`);
             }
             if (!(comparisonType in COMPARISONS)) {
                 throw new Error(`Comparison-operator ${comparisonType} is not supported`);

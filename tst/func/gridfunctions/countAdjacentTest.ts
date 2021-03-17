@@ -26,7 +26,7 @@ describe('func:CountAdjacent', () => {
         let args = ["fe", "1", "3", "1"];
         expect(() => countAdjacent.getParameterizedFunc(...args)).to.throw("Comparison-operator fe is not supported");
         args = ["le", "biek", "2", "0"];
-        expect(() => countAdjacent.getParameterizedFunc(...args)).to.throw("Parameter target, threshold, destination of countAdjacent must be integer");
+        expect(() => countAdjacent.getParameterizedFunc(...args)).to.throw("Parameter target, threshold, destination of CountAdjacent must be integer");
     })
 
     it('test countAdjacent le', () => {

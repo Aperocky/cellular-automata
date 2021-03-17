@@ -21,6 +21,7 @@ COLOR_MAP.set("yellow", 0xffff00);
 COLOR_MAP.set("olive", 0x808000);
 COLOR_MAP.set("purple", 0x800080);
 COLOR_MAP.set("turd", 0x7b5c00);
+COLOR_MAP.set("sand", 0xc2b280);
 
 export const DEFAULT_SQUARE_AND_BORDER_SIZE = 8
 export const DEFAULT_MAP_SIZE = 100;

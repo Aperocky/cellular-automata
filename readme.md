@@ -49,21 +49,28 @@ More examples: https://github.com/Aperocky/cellular-automata/tree/main/sample
 
 ### Functions
 
-`CountAdjacent [comparison-operator] [target] [threshold] [destination]`
+```
+CountAdjacent [comparison-operator] [target] [threshold] [destination]
+CountDirectlyAdjacent [comparison-operator] [target] [threshold] [destination]
+```
 
-`CountDirectlyAdjacent [comparison-operator] [target] [threshold] [destination]`
+This compares the total adjacent blocks that are `target` with `threshold` to determine if it will changes to `destination`. Adjacent goes to 8 neighboring cells, DirectlyAdjacent only goes to 4.
 
-This compares the adjacent number of `target` with `threshold` to determine if it will changes to `destination`. Adjacent goes to 8 neighboring cells, DirectlyAdjacent only goes to 4.
+```
+CountAdjacentChance [comparison-operator] [target] [threshold] [destination] [chance]
+```
 
-`CountAdjacentChance [comparison-operator] [target] [threshold] [destination] [chance]`
+This compares the total adjacent blocks that are `target` with `threshold` to determine if it will changes to `destination`, however, it only does so on `chance`.
 
-This compares the adjacent number of `target` with `threshold` to determine if it will changes to `destination`, however, it only does it on `chance`.
+```
+SpontaneousChange [destination] [chance]
+```
 
-`SpontaneousChange [destination] [chance]`
+This will change into `destination` on `chance`.
 
-This block will change into `destination` on `chance`.
-
-`ChangeByBLockAge [comparison-operator] [threshold] [destination] [chance]`
+```
+ChangeByBlockAge [comparison-operator] [threshold] [destination] [chance]
+```
 
 This will change the block by comparing the age of the block (when it remains the same) against the `threshold`, and if satisfy the comparison, will change into `destination` on `chance`.
 

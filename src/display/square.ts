@@ -18,7 +18,8 @@ export class Square extends PIXI.Sprite {
 
     setColor(color: string): void {
         if (!CONSTANTS.COLOR_MAP.has(color)) {
-            throw new Error(`Cannot find color ${color}`);
+            // colors not found in colorMap provided
+            color = "black";
         }
         this.tint = CONSTANTS.COLOR_MAP.get(color);
     }

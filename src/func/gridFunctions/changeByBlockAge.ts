@@ -12,13 +12,13 @@ export const changeByBlockAge: GridFunction = {
         let destination = parseInt(args[2]);
         let chance = parseFloat(args[3]);
         if (!Number.isInteger(threshold) || !Number.isInteger(destination)) {
-            throw new Error("Parameter threshold and destination of countAdjacent must be integer");
+            throw new Error("Parameter threshold and destination of ChangeByBlockAge must be integer");
         }
         if (!(comparisonType in COMPARISONS)) {
             throw new Error(`Comparison-operator ${comparisonType} is not supported`);
         }
         if (chance < 0 || chance > 1) {
-            throw new Error("Parameter chance of CountAdjacentChance must be between 0 and 1");
+            throw new Error("Parameter chance of ChangeByBlockAge must be between 0 and 1");
         }
         return (grid: Grid, location: Location): number => {
             let currAge = grid.gridAge[location.y][location.x];
