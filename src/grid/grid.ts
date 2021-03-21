@@ -28,13 +28,7 @@ export class Grid {
         if (config.initialCondition === undefined) {
             return;
         }
-        for (let y=0; y<this.size; y++) {
-            for (let x=0; x<this.size; x++) {
-                if (Math.random() < config.initialCondition[1]) {
-                    this.grid[y][x] = config.initialCondition[0];
-                }
-            }
-        }
+        config.initialCondition.createInitialCondition(this.grid, this.size);
     }
 
     updateGrid(config: Configuration): void {

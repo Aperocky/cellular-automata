@@ -1,0 +1,32 @@
+{
+  "0": [
+    "SpontaneousChange 1 0.001",
+    "CountAdjacentChance gt 1 0 1 0.1"
+  ],
+  "1": [
+    "SpontaneousChange 2 0.0001",
+    "CountAdjacentChance gt 2 0 2 0.1",
+    "CountAdjacentChance gt 2 1 2 0.3",
+    "CountAdjacentChance gt 2 2 2 0.6",
+    "CountAdjacent gt 2 3 2"
+  ],
+  "2": [
+    "SpontaneousChange 3 0.5"
+  ],
+  "3": [
+    "ChangeByBlockAge gt 5 4 0.1"
+  ],
+  "4": [
+    "CountAdjacentChance gt 1 0 0 0.2",
+    "CountAdjacentChance gt 1 1 0 0.5",
+    "ChangeByBlockAge gt 3 3 0.3"
+  ],
+  "colorMap": {
+    "0": "blue",
+    "1": "sand",
+    "2": "blue",
+    "3": "navy",
+    "4": "navy"
+  },
+  "timeStep": 100
+}

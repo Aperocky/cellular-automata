@@ -39,6 +39,18 @@ describe('grid:Grid', () => {
         expect(grid.previousGrid).to.eql(new Grid(10).grid);
     });
 
+    it('test central dot initial condition', () => {
+        let grid = new Grid(10);
+        let inputString = JSON.stringify({
+            "InitialCondition": "centralDot 1"
+        });
+        let config = parse(inputString);
+        grid.createInitialCondition(config);
+        let gridSum = [].concat(...grid.grid).filter(e => e == 1).length;
+        expect(gridSum).to.equal(1);
+        expect(grid.grid[4][4]).to.equal(1);
+    });
+
     it('test conway condition in updateGrid', () => {
         let inputString = JSON.stringify(CONWAY_CONDITIONS);
         let config = parse(inputString);

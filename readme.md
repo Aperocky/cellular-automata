@@ -76,6 +76,29 @@ ChangeByBlockAge [comparison-operator] [threshold] [destination] [chance]
 
 This will change the block by comparing the age of the block (when it remains the same) against the `threshold`, and if satisfy the comparison, will change into `destination` on `chance`.
 
+### InitialCondition
+---
+
+There are a few initial condition available:
+
+When there are no initialCondition in the map, the map is initiated as all 0s.
+
+```
+"initialCondition": "[INITIAL_CONDITION]"
+```
+
+When `INITIAL_CONDITION` is in the format of:
+
+```
+"1 0.2": all blocks in the map will have 1 with a possibility of 20%
+
+"CentralDot 1": A single 1 in the center.
+
+"CentralSquare 1": A square of 1 (2x2) in the center, this is also perfectly in the middle of the whole map (100x100)
+
+"cornerDot 1": A dot of 1 in the top left corner
+```
+
 ### Anatomy of the json file
 ---
 

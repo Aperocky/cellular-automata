@@ -1,0 +1,21 @@
+{
+  "initialCondition": "CentralSquare 1",
+  "0": [
+    "CountAdjacent gt 1 0 1"
+  ],
+  "1": [
+    "CountAdjacent gt 1 4 2",
+    "CountAdjacent lt 1 2 0",
+    "CountAdjacent gt 2 0 0"
+  ],
+  "2": [
+    "CountAdjacent gt 2 3 0",
+    "CountAdjacent gt 1 3 0"
+  ],
+  "colorMap": {
+    "0": "tintblack",
+    "1": "sand",
+    "2": "gray"
+  },
+  "timeStep": 1000
+}

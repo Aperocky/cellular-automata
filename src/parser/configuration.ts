@@ -1,14 +1,15 @@
 // This stores the configurations read in by natural language
 import { ParameterizedFunction } from '../func/gridFunction';
+import { InitialCondition } from './initialCondition';
 
 export class Configuration {
 
-    initialCondition?: number[];
+    initialCondition: InitialCondition;
     colorMap: Map<number, string>;
     funcMap: Map<number, ParameterizedFunction[]>;
     timeStep: number;
 
-    setInitialCondition(initialCondition: number[]): void {
+    setInitialCondition(initialCondition: InitialCondition): void {
         this.initialCondition = initialCondition;
     }
 

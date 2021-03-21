@@ -1,6 +1,7 @@
 import { GridFunction, ParameterizedFunction } from '../func/gridFunction';
 import { FUNCTION_REGISTRY } from '../func/funcRegistry';
 import { Configuration } from './configuration';
+import { InitialCondition } from './initialCondition';
 import * as CONSTANTS from '../display/constants';
 
 
@@ -13,8 +14,10 @@ export default function parse(inputJson: string): Configuration {
         if (typeof initialConditionString != "string") {
             throw new Error("initial condition must be string");
         }
-        config.setInitialCondition(parseInitialCondition(initialConditionString));
+        config.setInitialCondition(InitialCondition.parse(initialConditionString));
         delete rawConfig.initialcondition;
+    } else {
+        config.setInitialCondition(new InitialCondition("NONE", 0));
     }
     if ("colormap" in rawConfig) {
         let colorMap = rawConfig["colormap"];
