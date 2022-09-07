@@ -1,6 +1,6 @@
 import { Configuration } from './parser/configuration';
 import parse from './parser/parser';
-import setup from './display/textbox';
+import { setupTextbox } from './display/textbox';
 import { Grid } from './grid/grid';
 import { Canvas } from './display/canvas';
 
@@ -18,7 +18,7 @@ export class Controller {
         this.grid = new Grid(size);
         this.canvas = new Canvas(size);
         this.runState = false;
-        setup(this);
+        setupTextbox(this);
     }
 
     setConfiguration(inputJson: string, hotStart: boolean = false): void {

@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "esModuleInterop": true,
+        "downlevelIteration": true,
         "target": "es5",
         "removeComments": true,
         "lib": [

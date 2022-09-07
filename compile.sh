@@ -9,3 +9,5 @@ echo "MINIFY..."
 uglifyjs asset/script.js > asset/script.min.js
 echo "CLEANUP..."
 find src -name "*.js" | xargs rm
+echo "COPYING SAMPLES TO ASSET"
+cp -r sample asset/

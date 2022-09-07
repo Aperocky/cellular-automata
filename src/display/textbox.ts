@@ -36,14 +36,46 @@ function updateConfiguration(inputJson: string, controller: Controller, runState
 }
 
 
-export default function setup(controller: Controller) {
+function loadJson(name: string, textbox: HTMLInputElement): void {
+    let path = `/sample/${CONSTANTS.SAMPLE_SELECT_MAP.get(name)}`;
+    if (!(location.hostname == "0.0.0.0")) {
+        path = `/cellular-automata${path}`;
+    }
+    let request = new XMLHttpRequest();
+    request.onload = function () {
+        let result = this.response;
+        textbox.value = result;
+    }
+    request.open("GET", path);
+    request.send();
+}
+
+
+function setupSelectSample(textbox: HTMLInputElement): void {
+    let selectSample = <HTMLSelectElement>document.getElementById(CONSTANTS.SELECT_SAMPLE_ELEMENT_ID);
+    for (const name of CONSTANTS.SAMPLE_SELECT_MAP.keys()) {
+        let option = document.createElement("option");
+        option.setAttribute("value", name);
+        option.textContent = name;
+        selectSample.appendChild(option);
+    }
+    selectSample.onchange = function () {
+        let name = selectSample.value;
+        loadJson(name, textbox);
+    }
+    selectSample.value = CONSTANTS.INITIAL_SELECT_NAME;
+    loadJson(selectSample.value, textbox);
+}
+
+
+export function setupTextbox(controller: Controller) {
     let textbox = <HTMLInputElement>document.getElementById(CONSTANTS.TEXTBOX_ELEMENT_ID);
     let startButton = document.getElementById(CONSTANTS.START_BUTTON_ELEMENT_ID);
     let continueButton = document.getElementById(CONSTANTS.CONTINUE_BUTTON_ELEMENT_ID);
     let stopButton = document.getElementById(CONSTANTS.STOP_BUTTON_ELEMENT_ID);
     let stepButton = document.getElementById(CONSTANTS.STEP_BUTTON_ELEMENT_ID);
 
-    textbox.value = FOREST_FIRE;
+    setupSelectSample(textbox);
 
     startButton.addEventListener("click", () => {
         let inputJson = textbox.value;
