@@ -1,5 +1,7 @@
 ## Cellular Automata
 
+Web: https://aperocky.com/cellular-automata/, this simulation runs entirely in client.
+
 Creating a cellular automata with a couple lines of descriptive language and watch how it evolves:
 
 ![Fancy Logos](/image/logo2.png)
