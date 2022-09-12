@@ -2,9 +2,11 @@
 
 Creating a cellular automata with a couple lines of descriptive language and watch how it evolves:
 
-It now supports hot loading, CONTINUE and STEP each loads the new paradigm from a pause.
+![Fancy Logos](/image/logo2.png)
 
-e.g.
+^^ Logo generated using slightly modified `Generate Pretty Logo` example.
+
+Use descriptive conditions described in json to control a simulation:
 
 ```
 {
@@ -19,7 +21,7 @@ e.g.
 }
 ```
 
-^^ This correspond to conway's game of life.
+^^ This correspond to conway's game of life, with initial map being generated at 20% "filled".
 
 ```
 {
@@ -55,7 +57,7 @@ CountAdjacent [comparison-operator] [target] [threshold] [destination]
 CountDirectlyAdjacent [comparison-operator] [target] [threshold] [destination]
 ```
 
-This compares the total adjacent blocks that are `target` with `threshold` to determine if it will changes to `destination`. Adjacent goes to 8 neighboring cells, DirectlyAdjacent only goes to 4.
+This compares the total adjacent blocks that are `target` with `threshold` to determine if it will changes to `destination`. Adjacent counts 8 neighboring cells, DirectlyAdjacent only counts the 4 blocks in cardinal directions.
 
 ```
 CountAdjacentChance [comparison-operator] [target] [threshold] [destination] [chance]
