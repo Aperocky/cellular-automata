@@ -13,8 +13,8 @@ export class Grid {
 
     constructor(size: number) {
         this.size = size;
-        this.grid = Array.apply(null, new Array(size)).map(e => Array(10).fill(0));
-        this.gridAge = Array.apply(null, new Array(size)).map(e => Array(10).fill(0));
+        this.grid = Array.apply(null, new Array(size)).map(e => Array(size).fill(0));
+        this.gridAge = Array.apply(null, new Array(size)).map(e => Array(size).fill(0));
         this.previousGrid = JSON.parse(JSON.stringify(this.grid));
     }
 
